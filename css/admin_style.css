@@ -1,0 +1,168 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background-color: lightgray;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+.menu {
+  flex: 2;
+}
+/* product */
+.container {
+  flex: 10;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  border: 2px solid white;
+  flex-direction: column;
+  margin: 15px;
+  min-height: 80vh;
+}
+.container .title {
+  width: 100%;
+  background-color: rgb(77, 185, 185);
+  height: 35px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  border-radius: 10px;
+}
+.container form {
+  width: 70%;
+  margin: 10px auto;
+}
+.container .form__group {
+  display: flex;
+  margin: 8px 0;
+  align-items: center;
+}
+.form__group input,
+.form__group select,
+.form__group textarea {
+  flex: 4;
+  padding: 6px;
+  outline: none;
+}
+textarea {
+  resize: none;
+  height: 100px;
+}
+.form__group input[type="submit"] {
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: rgb(90, 90, 197);
+  color: white;
+  border: none;
+}
+.form__group input[type="submit"]:hover {
+  background-color: rgb(29, 29, 97);
+  color: rgb(238, 204, 204);
+}
+.form__group span {
+  flex: 1;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+/* header */
+.header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #111111;
+  align-items: center;
+  color: white;
+  padding: 0 30px;
+  height: 50px;
+  font-size: 20px;
+  justify-content: space-between;
+}
+.navbar {
+  display: flex;
+  position: sticky;
+  top: 50px;
+  width: 20%;
+  background-color: #222222;
+  padding: 20px;
+  color: white;
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+}
+.navbar ul {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  justify-content: space-between;
+}
+.navbar li {
+  padding: 15px;
+}
+.navbar a {
+  color: white;
+  padding: 15px;
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    position: relative;
+  }
+}
+.container img{
+  width: 100px;
+}
+.container table{
+  margin-top:30px;
+  border-collapse: collapse;
+  width:95%;
+  
+}
+.container td,
+.container th{
+  text-align: center;
+  border:1px solid black;
+  padding: 5px;
+}
+.container .title a{
+  border: 2px solid black;
+  padding: 5px;
+  margin:0 10px;
+  background-color:rgb(199, 153, 69);
+  color:white;
+}
+input[type="submit"]{
+  padding: 10px;
+  width: 80%;
+  background-color:green;
+}
+.box,.box__left,.box__right{
+  display: flex;
+  padding:20px;
+  align-items: center;
+  margin-top:20px;
+}
+.box{
+  border: 2px solid black;
+}
+
