@@ -3,9 +3,9 @@
         <li class="sidebar__item">
             <a href="user_orders.php" class="sidebar__link">Đơn đặt hàng</a>
         </li>
-        <li class="sidebar__item">
+        <!-- <li class="sidebar__item">
             <a href="user_offline.php" class="sidebar__link">Thanh toán ngoại tiếp </a>
-        </li>
+        </li> -->
         <li class="sidebar__item">
             <a href="user_pass.php" class="sidebar__link">Đổi mật khẩu </a>
         </li>

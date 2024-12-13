@@ -14,10 +14,10 @@ include('admin_sidebar.php');
     <table>
         <tr>
             <th>Số thứ tự thanh toán</th>
-            <th>Mã hóa đơn thanh toán</th>
-            <th>Số tiền đã thanh toán</th>
-            <th>Phương thức thanh toán</th>
-            <th>Mã thanh toán</th>
+            <th>Họ và tên</th>
+            <th>Số điện thoại</th>
+            
+            <th>Email</th>
             <th>Ngày thanh toán</th>
             <th>Xóa thanh toán</th>
         </tr>
@@ -29,7 +29,7 @@ include('admin_sidebar.php');
             $pay_id = $row['pay_id'];
             $receipt = $row['receipt'];
             $money = $row['money'];
-            $mode = $row['mode'];
+           
             $code = $row['code'];
             $date = $row['date'];
             $i++;
@@ -38,7 +38,7 @@ include('admin_sidebar.php');
                 <td>$i</td>
                 <td>$receipt</td>
                 <td>$money</td>
-                <td>$mode</td>
+                
                 <td>$code</td>
                 <td>$date</td>
                 <td>

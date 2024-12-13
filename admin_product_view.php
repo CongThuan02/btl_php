@@ -43,7 +43,7 @@ include('admin_sidebar.php');
                 <td>
                     <img src='./image/$product_img' alt='' />
                 </td>
-                <td>$product_price VND</td>
+                <td>$product_price Triệu</td>
                 <td>$product_keywords</td>
                 <td>$date</td>
                 <td>

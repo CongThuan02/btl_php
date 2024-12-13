@@ -47,7 +47,7 @@ include('header.php')
                                     $product_title
                                 </h3>
                                 <p>
-                                    $product_price VND
+                                    $product_price Triệu
                                 </p>
                                 <p class='content__btn'>
                                     <a href='details.php?product_id=$product_id'>

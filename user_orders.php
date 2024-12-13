@@ -25,10 +25,10 @@ if (!isset($_SESSION['user_email'])) {
                         <th>Số tiền</th>
                         <th>Hóa đơn</th>
                         <th>Số lượng</th>
-                        <th>Kích thước</th>
-                        <th>Ngày đặt hàng</th>
+                        <!-- <th>Kích thước</th> -->
+                        <th>Ngày liên hệ</th>
                         <th>Thanh toán</th>
-                        <th>Trạng thái</th>
+                        <th>Thông tin liên hệ</th>
                     </tr>
                     <?php
                     $user_email = $_SESSION['user_email'];
@@ -50,32 +50,34 @@ if (!isset($_SESSION['user_email'])) {
                         // Số lượng
                         $qty = $row_2['qty'];
                         // Kích thước
-                        $size = $row_2['size'];
-                        // Ngày đặt hàng
+                        // $size = $row_2['size'];
+                        // Ngày liên hệ
                         $date = substr($row_2['date'], 0, 11);
-                        echo $date;
+                       
                         // Thanh toán
                         $status = $row_2['status'];
                         $i++;
                         // Trạng thái
                         if ($status == 'pending') {
                             $status = 'Chưa trả';
-                        } else {
-                            $status = 'Trả';
+                        } else if($status == 'Hoàn thành đơn') {
+                            $status = 'Hoàn thành đơn';
+                        }else{
+                            $status = 'Chờ nhận hàng';
                         }
                         echo "
                             <tr>
                             <td>$i</td>
-                            <td>$money VND</td>
+                            <td>$money Triệu</td>
                             <td>$receipt</td>
                             <td>$qty</td>
-                            <td>$size</td>
+                           
                             <td>$date</td>
                             <td>$status</td>
                             <td>
                                 <a href='user_order-pay.php?order_id=$order_id'>
                                     <button>
-                                        Xác nhận đã thanh toán
+                                        Thông tin liên hệ
                                     </button>
                                 </a>
                                 </td>

@@ -63,7 +63,7 @@ include('functions.php')
 
                     echo $total;
                     ?>
-                    VND
+                    Triệu
                 </a>
             </div>
             <div class="header__right">

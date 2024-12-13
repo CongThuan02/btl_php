@@ -17,10 +17,11 @@ include('admin_sidebar.php');
             <th>Email đơn đặt hàng</th>
             <th>Mã hóa đơn đặt hàng</th>
             <th>Số lượng sản phẩm </th>
-            <th>Kích thước sản phẩm </th>
-            <th>Ngày đặt hàng </th>
+            
+            <th>Ngày liên hệ </th>
             <th>Tổng cộng </th>
             <th>Trạng thái đặt hàng </th>
+            <th>Xử lý đơn</th>
             <th>Xóa đơn đặt hàng</th>
         </tr>
         <?php
@@ -33,7 +34,7 @@ include('admin_sidebar.php');
             $receipt = $row['receipt'];
             $money = $row['money'];
             $qty = $row['qty'];
-            $size = $row['size'];
+            
             $date = $row['date'];
             $status = $row['status'];
             $sum = $money * $qty;
@@ -49,12 +50,14 @@ include('admin_sidebar.php');
                 <td>$user_email</td>
                 <td>$receipt</td>
                 <td>$qty</td>
-                <td>$size </td>
                 <td>$date </td>
                 <td>$sum </td>
                 <td>$status </td>
                 <td>
                 <a href='admin_order_delete.php?order_id=$order_id'>Xóa</a>
+            </td>
+               <td>
+                <a href='admin_oder_accept.php?order_id=$order_id'>Xử lý đơn</a>
             </td>
             </tr>
             ";

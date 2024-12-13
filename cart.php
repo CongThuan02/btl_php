@@ -12,7 +12,13 @@ $active = 'Cart';
 include('header.php')
 
 ?>
-
+    <?php
+    $user_email = $_SESSION['user_email'];
+    $sql = "SELECT * FROM user WHERE user_email='$user_email'";
+    $res = mysqli_query($con, $sql);
+    $row = mysqli_fetch_array($res);
+    $user_id = $row['user_id'];
+    ?>
 <div class="main">
     <div class="shop">
         <div class="shop__container">
@@ -38,9 +44,9 @@ include('header.php')
                         <table>
                             <tr>
                                 <th colspan="5">Sản Phẩm</th>
-                                <th>Số lượng</th>
+                    
                                 <th>Giá tiền/chiếc</th>
-                                <th>Kích thước</th>
+                            
                                 <th>Xóa</th>
                                 <th>Tổng tiền</th>
                             </tr>
@@ -49,8 +55,7 @@ include('header.php')
                             $total = 0;
                             while ($row = mysqli_fetch_array($res)) {
                                 $product_id = $row['p_id'];
-                                $size = $row['size'];
-                                $qty = $row['qty'];
+                             
                                 $sql_2 = "select * from product where product_id='$product_id'";
                                 $res_2 = mysqli_query($con, $sql_2);
                                 while ($row_2 = mysqli_fetch_array($res_2)) {
@@ -72,15 +77,15 @@ include('header.php')
                                     $product_title
                                 </a>
                             </td>
-                            <td>$qty</td>
-                            <td>$only_price VND</td>
-                            <td>$size</td>
+                            
+                            <td>$only_price Triệu</td>
+                           
                             <td>
                             <input id='delete__$product_id' type='checkbox' name='remove[]' value='$product_id;'>
                             <label for='delete__$product_id'>Xóa</label>
                             </td>
                             <td>
-                               $sub_total VND
+                               $sub_total Triệu
                             </td>
                         </tr>
  ";
@@ -116,21 +121,28 @@ include('header.php')
                                     </a>
                                 </div>
                                 <?php
-                                if (isset($_POST['update'])) {
-                                    foreach ($_POST['remove'] as $remove_id) {
-                                        $sql = "delete from cart where p_id='$remove_id'";
-                                        $res = mysqli_query($con, $sql);
-                                        if ($res) {
-                                            echo "<script>window.open('cart.php','_self')</script>";
-                                        }
-                                    }
-                                }
-                                ?>
+if (isset($_POST['update']) && isset($_POST['remove'])) {
+    // Kiểm tra xem mảng 'remove' có tồn tại và có phần tử không
+    foreach ($_POST['remove'] as $remove_id) {
+        // Loại bỏ dấu chấm phẩy và các ký tự không hợp lệ khác
+        $remove_id = rtrim($remove_id, ';');
+        
+        // Kiểm tra xem $remove_id có phải là số hợp lệ không
+        if (is_numeric($remove_id)) {
+            $sql = "DELETE FROM cart WHERE p_id='$remove_id'";
+            $res = mysqli_query($con, $sql);
+            if ($res) {
+                echo "<script>window.open('cart.php','_self')</script>";
+            }
+        }
+    }
+}
+?>
                                 <div class="cart__checkout">
-                                    <a href="checkout.php">
+                                    <a href="user_order.php?user_id=<?php echo $user_id ?>">
                                         <button type="button">
                                             <span>
-                                                Giỏ hàng trong tài khoản
+                                                Thêm vào giỏ hàng
                                             </span>
                                             <i class="fa fa-angle-right"></i>
                                         </button>
@@ -151,19 +163,19 @@ include('header.php')
                         </div>
                         <div class="order__sub">
                             <span>Đặt hàng Tất cả Tổng phụ</span>
-                            <p><?php echo $total; ?> VND</p>
+                            <p><?php echo $total; ?> Triệu</p>
                         </div>
                         <div class="order__shipping">
                             <span>Vận chuyển và Xử lý</span>
-                            <p>0 VND</p>
+                            <p>0 Triệu</p>
                         </div>
                         <div class="order__tax">
                             <span>Thuế</span>
-                            <p>0 VND</p>
+                            <p>0 Triệu</p>
                         </div>
                         <div class="order__total">
                             <span>Toàn bộ</span>
-                            <p><?php echo $total; ?> VND</p>
+                            <p><?php echo $total; ?> Triệu</p>
                         </div>
                     </div>
                 </div>
@@ -192,7 +204,7 @@ include('header.php')
                                 </h3>
                                 </a>
                                 <p>
-                                    $product_price VND
+                                    $product_price Triệu
                                 </p>
                             </div>
                         </div>
