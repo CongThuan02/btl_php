@@ -22,12 +22,12 @@ if (!isset($_SESSION['user_email'])) {
                 <table>
                     <tr>
                         <th>STT</th>
-                        <th>Số tiền</th>
+                        <!-- <th>Số tiền</th> -->
                         <th>Hóa đơn</th>
-                        <th>Số lượng</th>
+                        <!-- <th>Số lượng</th> -->
                         <!-- <th>Kích thước</th> -->
                         <th>Ngày liên hệ</th>
-                        <th>Thanh toán</th>
+                        <th>Trạng thái</th>
                         <th>Thông tin liên hệ</th>
                     </tr>
                     <?php

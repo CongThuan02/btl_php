@@ -22,9 +22,9 @@ while ($row = mysqli_fetch_array($res)) {
     // gán cho biến bằng với cột p_id
     $product_id = $row['p_id'];
     // gán cho biến bằng với cột qty
-    $product_qty = $row['qty'];
-    // gán cho biến bằng với cột size
-    $product_size = $row['size'];
+    // $product_qty = $row['qty'];
+    // // gán cho biến bằng với cột size
+    // $product_size = $row['size'];
     $sql_2 = "select * from product where product_id='$product_id'";
     $res_2 = mysqli_query($con, $sql_2);
     while ($row_2 = mysqli_fetch_array($res_2)) {
