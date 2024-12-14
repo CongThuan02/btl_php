@@ -135,11 +135,11 @@ include('functions.php')
                         </span>
                     </a>
                 </li>
-                <li class="nav__item">
+                <!-- <li class="nav__item">
                     <a href="contact.php" class="nav__link <?php if ($active == 'Contact') echo "active"; ?>">
                         Liên hệ
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="navbar__search">

@@ -63,13 +63,13 @@ if (isset($_GET['product_id'])) {
                         $sql = "SELECT * FROM cart WHERE ip_add='$ip_add' AND p_id='$p_id'";
                         $res = mysqli_query($con, $sql);
                         if (mysqli_num_rows($res) > 0) {
-                            echo "<script>alert('Sản phẩm này đã được thêm vào giỏ hàng')</script>";
-                            echo "<script>window.open('details.php?product_id=$p_id','_self')</script>";
+                          
+                            echo "<script>window.open('cart.php','_self')</script>";
                         } else {
                             $sql_2 = "INSERT INTO cart (p_id, ip_add )
                                       VALUES ('$p_id', '$ip_add')";
                             $res_2 = mysqli_query($con, $sql_2);
-                            echo "<script>window.open('details.php?product_id=$p_id','_self')</script>";
+                            echo "<script>window.open('cart.php','_self')</script>";
                         }
                     }
                     ?>
