@@ -48,7 +48,7 @@ if (!isset($_SESSION['user_email'])) {
                         // Hóa đơn
                         $receipt = $row_2['receipt'];
                         // Số lượng
-                        $qty = $row_2['qty'];
+                        // $qty = $row_2['qty'];
                         // Kích thước
                         // $size = $row_2['size'];
                         // Ngày liên hệ
