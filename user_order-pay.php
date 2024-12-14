@@ -46,7 +46,7 @@ if (!isset($_SESSION['user_email'])) {
                         Ngày giao dịch
                     </label>
                     <input type="date" required name="date" placeholder="Nhập ngày giao dịch">
-                    <button class="button" name="submit" type="submit">Xác nhận thanh toán</button>
+                    <button class="button" name="submit" type="submit">Xác liên hệ</button>
                 </form>
             </div>
         </div>
