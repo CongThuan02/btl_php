@@ -1,7 +1,6 @@
 <?php
 $active = 'Account';
 include('header.php');
-
 ?>
 <div class="main">
     <div class="shop">
@@ -15,9 +14,9 @@ include('header.php');
             ?>
             <div class="register">
                 <div class="register__title">
-                    đăng ký
+                    Đăng ký
                 </div>
-                <form action="register.php" method="post" class="register__form">
+                <form action="register.php" method="post" class="register__form" onsubmit="return validatePhone()">
                     <label>
                         Tên của bạn*
                     </label>
@@ -37,13 +36,12 @@ include('header.php');
                     <label>
                         Số điện thoại*
                     </label>
-                    <input name="user_phone" required type="text" placeholder="Nhập số điện thoại" maxlength="10"
-                        minlength="10">
+                    <input id="user_phone" name="user_phone" required type="text" placeholder="Nhập số điện thoại" maxlength="10" minlength="10">
+                    <span id="phone-error" style="color: red; display: none;">Số điện thoại không hợp lệ. Vui lòng nhập lại số điện thoại Việt Nam hợp lệ.</span>
                     <button type="submit" name="submit" class="btn">Đăng kí</button>
                 </form>
             </div>
         </div>
-
     </div>
 </div>
 <?php
@@ -85,3 +83,20 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
+<script>
+// JavaScript function to validate phone number format
+function validatePhone() {
+    var phone = document.getElementById('user_phone').value;
+    var phonePattern = /^(03|04|05|07|08|09)[0-9]{8}$/;
+    var errorMessage = document.getElementById('phone-error');
+
+    if (!phonePattern.test(phone)) {
+        errorMessage.style.display = 'inline'; // Show error message
+        return false; // Prevent form submission
+    } else {
+        errorMessage.style.display = 'none'; // Hide error message
+        return true; // Allow form submission
+    }
+}
+</script>
