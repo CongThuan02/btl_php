@@ -113,6 +113,13 @@ if (!isset($_SESSION['user_email'])) {
             background-color: #218838;
         }
 
+        /* Disabled button */
+        .info-btn.disabled {
+            background-color: #d3d3d3; /* Màu xám */
+            color: #a9a9a9; /* Màu chữ xám */
+            cursor: not-allowed;
+        }
+
         /* Sidebar */
         .user-sidebar {
             margin-right: 20px;
@@ -175,10 +182,13 @@ if (!isset($_SESSION['user_email'])) {
                                 $i++;
                                 if ($status == 'pending') {
                                     $status = 'Chưa trả';
+                                    $disabled_class = ''; // Không vô hiệu hóa nút
                                 } else if ($status == 'Hoàn thành đơn') {
                                     $status = 'Hoàn thành đơn';
+                                    $disabled_class = 'disabled'; // Vô hiệu hóa nút
                                 } else {
                                     $status = 'Chờ nhận hàng';
+                                    $disabled_class = ''; // Không vô hiệu hóa nút
                                 }
                                 echo "
                                     <tr>
@@ -188,7 +198,7 @@ if (!isset($_SESSION['user_email'])) {
                                         <td>$status</td>
                                         <td>
                                             <a href='user_order-pay.php?order_id=$order_id'>
-                                                <button class='info-btn'>
+                                                <button class='info-btn $disabled_class' " . ($disabled_class ? "disabled" : "") . ">
                                                     Thông tin liên hệ
                                                 </button>
                                             </a>

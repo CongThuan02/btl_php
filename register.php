@@ -16,30 +16,39 @@ include('header.php');
                 <div class="register__title">
                     Đăng ký
                 </div>
-                <form action="register.php" method="post" class="register__form" onsubmit="return validatePhone()">
-                    <label>
-                        Tên của bạn*
-                    </label>
-                    <input name="user_name" required type="text" placeholder="Nhập tên của bạn">
-                    <label>
-                        Email của bạn*
-                    </label>
-                    <input name="user_email" required type="email" placeholder="Nhập Email">
-                    <label>
-                        Mật khẩu*
-                    </label>
-                    <input name="user_pass" required type="password" placeholder="Nhập mật khẩu mới">
-                    <label>
-                        Mật khẩu*
-                    </label>
-                    <input name="user_pass_2" required type="password" placeholder="Nhập lại mật khẩu ">
-                    <label>
-                        Số điện thoại*
-                    </label>
-                    <input id="user_phone" name="user_phone" required type="text" placeholder="Nhập số điện thoại" maxlength="10" minlength="10">
-                    <span id="phone-error" style="color: red; display: none;">Số điện thoại không hợp lệ. Vui lòng nhập lại số điện thoại Việt Nam hợp lệ.</span>
-                    <button type="submit" name="submit" class="btn">Đăng kí</button>
-                </form>
+                <form action="register.php" method="post" class="register__form" onsubmit="return validateForm()">
+    <label>
+        Tên của bạn*
+    </label>
+    <input name="user_name" id="user_name"  type="text" placeholder="Nhập tên của bạn">
+    <span id="name-error" style="color: red; display: none;">Vui lòng nhập tên của bạn</span>
+
+    <label>
+        Email của bạn*
+    </label>
+    <input name="user_email" id="user_email"  type="text" placeholder="Nhập Email">
+    <span id="email-error" style="color: red; display: none;">Vui lòng nhập Email hợp lệ</span>
+
+    <label>
+        Mật khẩu*
+    </label>
+    <input name="user_pass" id="user_pass"  type="password" placeholder="Nhập mật khẩu mới">
+    <span id="pass-error" style="color: red; display: none;">Vui lòng nhập mật khẩu</span>
+
+    <label>
+        Mật khẩu*
+    </label>
+    <input name="user_pass_2" id="user_pass_2"  type="password" placeholder="Nhập lại mật khẩu">
+    <span id="pass2-error" style="color: red; display: none;">Mật khẩu không khớp</span>
+
+    <label>
+        Số điện thoại*
+    </label>
+    <input id="user_phone" name="user_phone"  type="text" placeholder="Nhập số điện thoại" maxlength="10" minlength="10">
+    <span id="phone-error" style="color: red; display: none;">Số điện thoại không hợp lệ. Vui lòng nhập lại số điện thoại Việt Nam hợp lệ.</span>
+
+    <button type="submit" name="submit" class="btn">Đăng kí</button>
+</form>
             </div>
         </div>
     </div>
@@ -85,18 +94,62 @@ if (isset($_POST['submit'])) {
 ?>
 
 <script>
-// JavaScript function to validate phone number format
-function validatePhone() {
-    var phone = document.getElementById('user_phone').value;
-    var phonePattern = /^(03|04|05|07|08|09)[0-9]{8}$/;
-    var errorMessage = document.getElementById('phone-error');
+// JavaScript function to validate all form fields
+function validateForm() {
+    var valid = true;
 
-    if (!phonePattern.test(phone)) {
-        errorMessage.style.display = 'inline'; // Show error message
-        return false; // Prevent form submission
+    // Validate Name
+    var name = document.getElementById('user_name').value;
+    var nameError = document.getElementById('name-error');
+    if (name.trim() === "") {
+        nameError.style.display = 'inline';
+        valid = false;
     } else {
-        errorMessage.style.display = 'none'; // Hide error message
-        return true; // Allow form submission
+        nameError.style.display = 'none';
     }
+
+    // Validate Email
+    var email = document.getElementById('user_email').value;
+    var emailError = document.getElementById('email-error');
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+        emailError.style.display = 'inline';
+        valid = false;
+    } else {
+        emailError.style.display = 'none';
+    }
+
+    // Validate Password
+    var password = document.getElementById('user_pass').value;
+    var passwordError = document.getElementById('pass-error');
+    if (password.trim() === "") {
+        passwordError.style.display = 'inline';
+        valid = false;
+    } else {
+        passwordError.style.display = 'none';
+    }
+
+    // Validate Confirm Password
+    var confirmPassword = document.getElementById('user_pass_2').value;
+    var confirmPasswordError = document.getElementById('pass2-error');
+    if (confirmPassword !== password) {
+        confirmPasswordError.style.display = 'inline';
+        valid = false;
+    } else {
+        confirmPasswordError.style.display = 'none';
+    }
+
+    // Validate Phone Number
+    var phone = document.getElementById('user_phone').value;
+    var phoneError = document.getElementById('phone-error');
+    var phonePattern = /^(03|04|05|07|08|09)[0-9]{8}$/;
+    if (!phonePattern.test(phone)) {
+        phoneError.style.display = 'inline';
+        valid = false;
+    } else {
+        phoneError.style.display = 'none';
+    }
+
+    return valid; // Return false to prevent form submission if validation fails
 }
 </script>
