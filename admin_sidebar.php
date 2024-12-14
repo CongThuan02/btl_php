@@ -23,7 +23,7 @@ Yêu cầu :có thể linh hoạt
             <a href="admin_order_view.php"> Đơn đặt hàng </a>
         </li>
         <li>
-            <a href="admin_pay_view.php"> Thanh toán </a>
+            <a href="admin_pay_view.php"> Thông tin khách hàng </a>
         </li>
         <!-- <li>
             <a href="admin_css.php"> Chỉnh sửa CSS </a>

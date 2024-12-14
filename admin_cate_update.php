@@ -28,8 +28,8 @@ include('admin_sidebar.php');
                         $cat_desc = $row['cat_desc'];
                         echo "
                    <tr>
-                       <td><input type='text' name='cat_title' value='$cat_title'></td>
-                       <td><input type='text' name='cat_desc' value='$cat_desc'></td>
+                       <td><input type='text' name='cat_title' required value='$cat_title'></td>
+                       <td><input type='text' name='cat_desc' required value='$cat_desc'></td>
                        <input type='hidden' name='cat_id' value='$cat_id'>                  
                        <td><input type='submit' name='submit' value='Gửi'></td>    
                    </tr>

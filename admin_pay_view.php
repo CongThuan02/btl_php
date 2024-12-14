@@ -9,7 +9,7 @@ include('admin_sidebar.php');
 
 <div class="container">
     <div class="title">
-        Xem danh sách thanh toán
+       Danh sách khách hàng
     </div>
     <table>
         <tr>
@@ -18,8 +18,8 @@ include('admin_sidebar.php');
             <th>Số điện thoại</th>
             
             <th>Email</th>
-            <th>Ngày thanh toán</th>
-            <th>Xóa thanh toán</th>
+            <th>Ngày Đặt hàng</th>
+            <th>Xóa Khách hàng</th>
         </tr>
         <?php
         $sql = "SELECT * FROM `pay`";
