@@ -89,7 +89,7 @@
                 <div class="footer__product">
                     <div class="footer__title">
                         <h3>Tin tức sản phẩm mới</h3>
-                        <h5>Đừng bỏ Nama bất kì sản phẩm nào của chúng tôi</h5>
+                        <h5>Gửi email để liên lạc với tôi</h5>
                         <!-- feedburner -->
                         <form action="" class="footer__form">
                             <input type="text">
