@@ -14,10 +14,15 @@ include('header.php')
 ?>
     <?php
     $user_email = $_SESSION['user_email'];
+   if(is_null( $user_email)){
+    echo "<script>window.open('checkout.php','_self')</script>";
+   }else{
+
     $sql = "SELECT * FROM user WHERE user_email='$user_email'";
     $res = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($res);
     $user_id = $row['user_id'];
+   }
     ?>
 <div class="main">
     <div class="shop">

@@ -51,12 +51,12 @@ Yêu cầu :có thể linh hoạt
             }
             ?>
         </li>
-        <li>
+        <!-- <li>
             <a href="admin_contact_view.php"> Phản Hồi</a>
         </li>
         <li>
             <a href="admin_box_view.php"> Khối</a>
-        </li>
+        </li> -->
         <li>
             <a href="admin_network_view.php"> Mạng xã hội</a>
         </li>

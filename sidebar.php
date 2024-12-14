@@ -1,3 +1,6 @@
+<?php
+include('db.php'); // Đảm bảo đường dẫn đúng
+?>
 <div class="shop__sidebar">
     <div class="sidebar">
         <div class="sidebar__title">
