@@ -14,7 +14,16 @@ if (isset($_POST['submit'])) {
         $error_message = 'Email hoặc mật khẩu của bạn sai';
     } else {
         $_SESSION['ad_email'] = $ad_email;
-        echo "<script>alert('Bạn đã đăng nhập thành công')</script>";
+        echo "<script>
+                Toastify({
+                    text: 'Đăng nhập thành công!',
+                    duration: 3000, // Thời gian hiển thị (3 giây)
+                    close: true, // Có nút đóng
+                    gravity: 'top', // Vị trí xuất hiện (top hoặc bottom)
+                    position: 'right', // Vị trí bên phải hay trái
+                    backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)' // Màu nền toast
+                }).showToast();
+              </script>";
         echo "<script>window.open('admin_index.php','_self')</script>";
     }
 }
@@ -83,6 +92,9 @@ if (isset($_POST['submit'])) {
             font-size: 14px;
         }
     </style>
+    <!-- Thêm Toastify CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 <body>
     <div class="admin__login">
