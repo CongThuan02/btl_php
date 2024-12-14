@@ -126,12 +126,7 @@
         <span>
             &copy;2021
         </span>
-        <span>
-            Thiết kế bởi:
-            <a href="#">
-                Nhóm 6
-            </a>
-        </span>
+   
     </div>
 </div>
 <div class="progress-wrap">
