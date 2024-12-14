@@ -36,12 +36,12 @@ if (!isset($_SESSION['user_email'])) {
                     <label>
                         Số điện thoại (*)
                     </label>
-                    <input type="text" required name="money" placeholder="Số điện thoại">
+                    <input type="text" required name="money" placeholder="Số điện thoại" maxlength="10" pattern="\d{10}" title="Số điện thoại phải có 10 chữ số">
                    
                     <label>
                         Email (*)
                     </label>
-                    <input type="text" required name="code" placeholder="Email">
+                    <input type="email" required name="code" placeholder="Email">
                     <label>
                         Ngày giao dịch
                     </label>
