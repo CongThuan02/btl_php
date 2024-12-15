@@ -2,6 +2,9 @@
 $active = 'Account';
 include('header.php');
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <div class="main">
     <div class="shop">
         <div class="shop__container">
@@ -66,29 +69,37 @@ if (isset($_POST['submit'])) {
     $user_pass_2 = md5($_POST['user_pass_2']);
     $user_phone = $_POST['user_phone'];
     $user_ip = getRealIpUser();
+
     if ($user_pass == $user_pass_2) {
-        $sql = "INSERT INTO `user`(user_name,user_email,user_pass,user_phone,user_ip)
-        VALUES ('$user_name','$user_email','$user_pass','$user_phone','$user_ip')
-        ";
-        // echo $sql;
+        $sql = "INSERT INTO `user`(user_name, user_email, user_pass, user_phone, user_ip)
+                VALUES ('$user_name', '$user_email', '$user_pass', '$user_phone', '$user_ip')";
         $res = mysqli_query($con, $sql);
-        $sql_2 = "SELECT * FROM cart WHERE ip_add='$user_ip'";
-        $res_2 = mysqli_query($con, $sql_2);
-        $count = mysqli_num_rows($res_2);
-        if ($count > 0) {
-            // nếu chưa từng đăng kí thì sẽ trả về trang checkout
+
+        if ($res) {
+            $sql_2 = "SELECT * FROM cart WHERE ip_add='$user_ip'";
+            $res_2 = mysqli_query($con, $sql_2);
+            $count = mysqli_num_rows($res_2);
+
+            $_SESSION['user_name'] = $user_name;
             $_SESSION['user_email'] = $user_email;
-            echo "<script>alert('Bạn đã được đăng ký thành công')</script>";
-            echo "<script>window.open('checkout.php','_self')</script>";
-        } else {
-            // nếu đã từng đăng kí thì sẽ trả về trang index
-            $_SESSION['user_email'] = $user_email;
-            echo "<script>alert('Bạn đã được đăng ký thành công')</script>";
-            echo "<script>window.open('index.php','_self')</script>";
+
+            $redirectUrl = $count > 0 ? 'checkout.php' : 'index.php';
+
+            echo "<script>
+                $(document).ready(function() {
+                    toastr.success('Bạn đã được đăng ký thành công');
+                    setTimeout(function() {
+                        window.location.href = '$redirectUrl';
+                    }, 500);
+                });
+              </script>";
         }
     } else {
-        echo "<script>alert('Bạn đã nhập pass không trùng nhau')</script>";
-        echo "<script>window.open('register.php','_self')</script>";
+        echo "<script>
+            $(document).ready(function() {
+                toastr.error('Mật khẩu không khớp. Vui lòng kiểm tra lại.');
+            });
+        </script>";
     }
 }
 ?>
