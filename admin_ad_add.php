@@ -1,7 +1,9 @@
 <!-- Phần thêm admin 
 Yêu cầu:khi ấn vào nút thêm admin thì dữ liệu sẽ được thêm vào bảng ad sau khi ấn thêm sẽ chuyển về trang xem
 -->
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <?php
 include('admin_header.php');
 include('admin_sidebar.php');
@@ -34,18 +36,28 @@ include('admin_footer.php');
 ?>
 <?php
 if (isset($_POST['submit'])) {
-       $ad_email = $_POST['ad_email'];
-       // echo $ad_email;
-       $ad_pass = md5($_POST['ad_pass']);
-       // echo  $ad_pass;
-       $permission = $_POST['permission'];
-       // echo $permission;
-       $sql = "INSERT into `ad` (ad_email,ad_pass,permission) 
-    values ('$ad_email','$ad_pass','$permission')";
-       $res = mysqli_query($con, $sql);
-       if ($res) {
-              echo "<script>alert('Tài khoản được thêm thành công ')</script>";
-              echo "<script>window.open('admin_ad_view.php','_self')</script>";
-       }
+    $ad_email = $_POST['ad_email'];
+    $ad_pass = md5($_POST['ad_pass']);
+    $permission = $_POST['permission'];
+
+    $sql = "INSERT INTO `ad` (ad_email, ad_pass, permission) VALUES ('$ad_email', '$ad_pass', '$permission')";
+    $res = mysqli_query($con, $sql);
+
+    if ($res) {
+        echo "<script>
+                $(document).ready(function() {
+                    toastr.success('Tài khoản được thêm thành công');
+                    setTimeout(function() {
+                        window.location.href = 'admin_ad_view.php';
+                    }, 2000);
+                });
+              </script>";
+    } else {
+        echo "<script>
+                $(document).ready(function() {
+                    toastr.error('Có lỗi xảy ra, vui lòng thử lại.');
+                });
+              </script>";
+    }
 }
 ?>
