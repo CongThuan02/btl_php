@@ -105,7 +105,7 @@ if (isset($_POST['submit'])) {
         $user_result = mysqli_query($con, $user_query);
         $user_data = mysqli_fetch_assoc($user_result);
         $_SESSION['user_name'] = $user_data['user_name'];
-        echo "<script>alert('Bạn đã đăng nhập thành công')</script>";
+       
         echo "<script>window.open('user_orders.php','_self')</script>";
     } else {
         $_SESSION['user_email'] = $user_email;
@@ -113,7 +113,7 @@ if (isset($_POST['submit'])) {
         $user_result = mysqli_query($con, $user_query);
         $user_data = mysqli_fetch_assoc($user_result);
         $_SESSION['user_name'] = $user_data['user_name'];
-        echo "<script>alert('Bạn đã đăng nhập thành công')</script>";
+        
         echo "<script>window.open('cart.php','_self')</script>";
     }
 }
